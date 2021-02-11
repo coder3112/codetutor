@@ -1,0 +1,8 @@
+{
+  "python.pythonPath": "codetutor-lAz8rX_U-py3.9/bin/python",
+  "python.linting.pylintArgs": [
+    "src/"
+  ],
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": false
+}
