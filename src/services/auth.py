@@ -11,6 +11,7 @@ from passlib.context import CryptContext
 from piccolo.apps.user.tables import BaseUser
 
 from src.config.settings import settings
+from src.exceptions import credentials_exception
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -40,11 +41,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: Optional[str] = payload.get("sub")
