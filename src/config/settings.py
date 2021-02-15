@@ -2,7 +2,7 @@ from enum import Enum
 from pathlib import Path
 from pydantic import BaseSettings
 
-env_file_path = Path(__file__).parent
+env_file_path = Path(__file__).absolute().parent.parent.with_name(".env")
 
 
 class AppMode(Enum):

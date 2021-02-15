@@ -4,8 +4,10 @@ Server Init file.
 import logging
 from pathlib import Path
 import sys
+import os
 
 from fastapi import FastAPI
+from dotenv import load_dotenv
 
 from api.users.routes import router as user_router, add_piccolo_user_crud
 from config.settings import settings
@@ -14,7 +16,6 @@ from custom_logging import custom_logging
 # Start Logger
 logger = logging.getLogger(__name__)
 config_path = Path(__file__).absolute().with_name("logging_config.json")
-
 
 try:
     app: FastAPI = FastAPI(name=settings.name, title=settings.name)
