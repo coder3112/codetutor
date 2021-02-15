@@ -4,7 +4,6 @@ from piccolo.apps.user.tables import BaseUser
 from piccolo_api.crud.endpoints import PiccoloCRUD
 from piccolo_api.fastapi.endpoints import FastAPIKwargs, FastAPIWrapper
 
-from api.users.schemas import TokenSchema
 from exceptions import credentials_exception
 from services.auth import login
 

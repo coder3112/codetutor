@@ -2,11 +2,9 @@
 Server Init file.
 """
 import logging
-import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
 from fastapi import FastAPI
 
 from api.users.routes import add_piccolo_user_crud
