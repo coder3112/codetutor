@@ -1,12 +1,12 @@
-from fastapi.security.oauth2 import OAuth2PasswordRequestForm
-from piccolo_api.crud.endpoints import PiccoloCRUD
-from piccolo.apps.user.tables import BaseUser
-from piccolo_api.fastapi.endpoints import FastAPIWrapper, FastAPIKwargs
 from fastapi import APIRouter, Depends
+from fastapi.security.oauth2 import OAuth2PasswordRequestForm
+from piccolo.apps.user.tables import BaseUser
+from piccolo_api.crud.endpoints import PiccoloCRUD
+from piccolo_api.fastapi.endpoints import FastAPIKwargs, FastAPIWrapper
 
-from services.auth import login
-from exceptions import credentials_exception
 from api.users.schemas import TokenSchema
+from exceptions import credentials_exception
+from services.auth import login
 
 router = APIRouter()
 

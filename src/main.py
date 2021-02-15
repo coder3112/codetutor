@@ -2,14 +2,15 @@
 Server Init file.
 """
 import logging
-from pathlib import Path
-import sys
 import os
+import sys
+from pathlib import Path
 
-from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi import FastAPI
 
-from api.users.routes import router as user_router, add_piccolo_user_crud
+from api.users.routes import add_piccolo_user_crud
+from api.users.routes import router as user_router
 from config.settings import settings
 from custom_logging import custom_logging
 
