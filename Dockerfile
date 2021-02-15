@@ -8,6 +8,8 @@ RUN poetry install
 
 # Copy app
 COPY ./src /app
+# Copy .env file
+COPY ./.env /
 
 # Setup env variables for docker
 ENV postgres_host="postgres"
