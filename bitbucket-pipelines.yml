@@ -1,20 +1,19 @@
-image: python:3.9
+image: python:3.9 # Use python 3.9
 
 pipelines:
   default:
-    - parallel:
-      - step:
-          name: Test
-          caches:
-            - pip
-          script:
-            - pip install poetry
-            - poetry config virtualenvs.create false
-            - poetry install --no-root
-            - poetry run pytest
-      - step:
-          name: Lint
-          script:
-            - flake8 . --extend-exclude=dist,build --show-source --statistics
-            - black .
-            - isort --color -n .
+    - step:
+      name: Virtualenv
+      script: -pip install poetry
+        - poetry config virtualenvs.create false
+        - poetry install --no-root
+    - step:
+        name: Lint
+        script:
+          - poetry run flake8 . --extend-exclude=dist,build --show-source --statistics
+          - poetry run black .
+          - poetry run isort --color -n .
+    # - step:
+    # name: Test
+    # script:
+    # - poetry run pytest
