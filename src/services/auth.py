@@ -2,7 +2,7 @@
 Authentication business logic
 """
 from datetime import datetime, timedelta
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
@@ -12,6 +12,7 @@ from piccolo.apps.user.tables import BaseUser
 
 from config.settings import settings
 from exceptions import credentials_exception
+from schemas.user import UserOut
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -53,13 +54,14 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     )
     if current_user is None:
         raise credentials_exception
-    return current_user
+    return UserOut(**current_user)
 
 
-async def login(username: str, password: str) -> Optional[str]:
+async def login(username: str, password: str) -> Optional[Tuple[str, UserOut]]:
     user_id: Optional[int] = await BaseUser.login(username=username, password=password)
     if not user_id:
         return None
     data: Dict = {"sub": username}
     access_jwt: str = create_access_token(data)
-    return access_jwt
+    user = await get_current_user(access_jwt)
+    return access_jwt, user

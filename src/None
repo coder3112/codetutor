@@ -1,0 +1,109 @@
+INFO     2021-02-21 13:00:33.363 request id: None - main:<module> - Initialized app
+INFO     2021-02-21 13:00:33.366 request id: None - main:<module> - Added user router
+INFO     2021-02-21 13:00:33.391 request id: app - uvicorn._impl.asyncio:serve - Started server process [411309]
+INFO     2021-02-21 13:00:33.392 request id: app - uvicorn._impl.asyncio:serve - Started server process [411309]
+INFO     2021-02-21 13:00:33.392 request id: app - uvicorn._impl.asyncio:serve - Started server process [411309]
+INFO     2021-02-21 13:00:33.393 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2021-02-21 13:00:33.393 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2021-02-21 13:00:33.394 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2021-02-21 13:00:33.395 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2021-02-21 13:00:33.396 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2021-02-21 13:00:33.397 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2021-02-21 13:00:33.398 request id: app - uvicorn._impl.asyncio:startup - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO     2021-02-21 13:00:33.399 request id: app - uvicorn._impl.asyncio:startup - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO     2021-02-21 13:00:33.400 request id: app - uvicorn._impl.asyncio:startup - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+DEBUG    2021-02-21 13:00:36.017 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:36.018 request id: app - multipart.multipart:callback - Calling on_field_name with data[0:10]
+DEBUG    2021-02-21 13:00:36.018 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:36.019 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:36.019 request id: app - multipart.multipart:callback - Calling on_field_name with data[12:20]
+DEBUG    2021-02-21 13:00:36.020 request id: app - multipart.multipart:callback - Calling on_field_data with data[21:23]
+DEBUG    2021-02-21 13:00:36.020 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:36.021 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:36.022 request id: app - multipart.multipart:callback - Calling on_field_name with data[24:32]
+DEBUG    2021-02-21 13:00:36.023 request id: app - multipart.multipart:callback - Calling on_field_data with data[33:43]
+DEBUG    2021-02-21 13:00:36.024 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:36.025 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:36.026 request id: app - multipart.multipart:callback - Calling on_field_name with data[44:49]
+DEBUG    2021-02-21 13:00:36.027 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:36.027 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:36.028 request id: app - multipart.multipart:callback - Calling on_field_name with data[51:60]
+DEBUG    2021-02-21 13:00:36.029 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:36.030 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:36.031 request id: app - multipart.multipart:callback - Calling on_field_name with data[62:75]
+DEBUG    2021-02-21 13:00:36.033 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:36.034 request id: app - multipart.multipart:callback - Calling on_end with no data
+INFO     2021-02-21 13:00:36.096 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46442 - "POST /token HTTP/1.1" 401
+DEBUG    2021-02-21 13:00:40.725 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:40.726 request id: app - multipart.multipart:callback - Calling on_field_name with data[0:10]
+DEBUG    2021-02-21 13:00:40.727 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:40.728 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:40.730 request id: app - multipart.multipart:callback - Calling on_field_name with data[12:20]
+DEBUG    2021-02-21 13:00:40.730 request id: app - multipart.multipart:callback - Calling on_field_data with data[21:26]
+DEBUG    2021-02-21 13:00:40.731 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:40.732 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:40.732 request id: app - multipart.multipart:callback - Calling on_field_name with data[27:35]
+DEBUG    2021-02-21 13:00:40.733 request id: app - multipart.multipart:callback - Calling on_field_data with data[36:46]
+DEBUG    2021-02-21 13:00:40.734 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:40.735 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:40.735 request id: app - multipart.multipart:callback - Calling on_field_name with data[47:52]
+DEBUG    2021-02-21 13:00:40.736 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:40.736 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:40.737 request id: app - multipart.multipart:callback - Calling on_field_name with data[54:63]
+DEBUG    2021-02-21 13:00:40.737 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:40.738 request id: app - multipart.multipart:callback - Calling on_field_start with no data
+DEBUG    2021-02-21 13:00:40.739 request id: app - multipart.multipart:callback - Calling on_field_name with data[65:78]
+DEBUG    2021-02-21 13:00:40.741 request id: app - multipart.multipart:callback - Calling on_field_end with no data
+DEBUG    2021-02-21 13:00:40.742 request id: app - multipart.multipart:callback - Calling on_end with no data
+INFO     2021-02-21 13:00:40.801 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46442 - "POST /token HTTP/1.1" 200
+INFO     2021-02-21 13:00:48.349 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46458 - "GET /users/ HTTP/1.1" 200
+INFO     2021-02-21 13:00:53.836 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46462 - "GET /users/?id=1 HTTP/1.1" 200
+INFO     2021-02-21 13:01:01.021 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46468 - "GET /users/?id=2 HTTP/1.1" 200
+INFO     2021-02-21 13:01:10.519 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46482 - "GET /users/ids/ HTTP/1.1" 200
+INFO     2021-02-21 13:01:17.514 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46486 - "GET /users/count/ HTTP/1.1" 200
+INFO     2021-02-21 13:01:24.583 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46490 - "GET /users/schema/ HTTP/1.1" 200
+INFO     2021-02-21 13:01:36.320 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46494 - "GET /users/references/ HTTP/1.1" 200
+INFO     2021-02-21 13:01:44.665 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46498 - "GET /users/1/ HTTP/1.1" 200
+INFO     2021-02-21 13:01:48.582 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46498 - "GET /users/2/ HTTP/1.1" 404
+INFO     2021-02-21 13:02:01.616 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46508 - "GET /users/1/ HTTP/1.1" 200
+INFO     2021-02-21 13:03:27.414 request id: app - uvicorn._impl.asyncio:shutdown - Shutting down
+INFO     2021-02-21 13:03:27.419 request id: app - uvicorn._impl.asyncio:shutdown - Shutting down
+INFO     2021-02-21 13:03:27.421 request id: app - uvicorn._impl.asyncio:shutdown - Shutting down
+INFO     2021-02-21 13:03:27.524 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2021-02-21 13:03:27.528 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2021-02-21 13:03:27.529 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2021-02-21 13:03:27.532 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2021-02-21 13:03:27.534 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2021-02-21 13:03:27.536 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2021-02-21 13:03:27.539 request id: app - uvicorn._impl.asyncio:serve - Finished server process [411309]
+INFO     2021-02-21 13:03:27.541 request id: app - uvicorn._impl.asyncio:serve - Finished server process [411309]
+INFO     2021-02-21 13:03:27.546 request id: app - uvicorn._impl.asyncio:serve - Finished server process [411309]
+INFO     2021-02-21 13:04:27.456 request id: None - main:<module> - Initialized app
+INFO     2021-02-21 13:04:27.461 request id: None - main:<module> - Added user router
+INFO     2021-02-21 13:04:27.481 request id: app - uvicorn._impl.asyncio:serve - Started server process [412869]
+INFO     2021-02-21 13:04:27.481 request id: app - uvicorn._impl.asyncio:serve - Started server process [412869]
+INFO     2021-02-21 13:04:27.482 request id: app - uvicorn._impl.asyncio:serve - Started server process [412869]
+INFO     2021-02-21 13:04:27.482 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2021-02-21 13:04:27.483 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2021-02-21 13:04:27.483 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2021-02-21 13:04:27.484 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2021-02-21 13:04:27.485 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2021-02-21 13:04:27.485 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2021-02-21 13:04:27.488 request id: app - uvicorn._impl.asyncio:startup - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO     2021-02-21 13:04:27.489 request id: app - uvicorn._impl.asyncio:startup - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO     2021-02-21 13:04:27.490 request id: app - uvicorn._impl.asyncio:startup - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO     2021-02-21 13:04:30.831 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46528 - "GET /users/ids/ HTTP/1.1" 200
+INFO     2021-02-21 13:04:40.782 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46540 - "GET /docs HTTP/1.1" 200
+INFO     2021-02-21 13:04:41.121 request id: app - uvicorn.protocols.http.httptools_impl:send - 127.0.0.1:46540 - "GET /openapi.json HTTP/1.1" 200
+INFO     2021-02-21 13:04:58.942 request id: app - uvicorn._impl.asyncio:shutdown - Shutting down
+INFO     2021-02-21 13:04:58.945 request id: app - uvicorn._impl.asyncio:shutdown - Shutting down
+INFO     2021-02-21 13:04:58.948 request id: app - uvicorn._impl.asyncio:shutdown - Shutting down
+INFO     2021-02-21 13:04:59.051 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2021-02-21 13:04:59.053 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2021-02-21 13:04:59.055 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2021-02-21 13:04:59.057 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2021-02-21 13:04:59.059 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2021-02-21 13:04:59.064 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2021-02-21 13:04:59.066 request id: app - uvicorn._impl.asyncio:serve - Finished server process [412869]
+INFO     2021-02-21 13:04:59.068 request id: app - uvicorn._impl.asyncio:serve - Finished server process [412869]
+INFO     2021-02-21 13:04:59.070 request id: app - uvicorn._impl.asyncio:serve - Finished server process [412869]
