@@ -10,9 +10,9 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from piccolo.apps.user.tables import BaseUser
 
-from config.settings import settings
-from exceptions import credentials_exception
-from schemas.user import UserOut
+from src.config.settings import settings
+from src.exceptions import credentials_exception
+from src.schemas.user import UserOut
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

@@ -7,10 +7,10 @@ from pathlib import Path
 
 from fastapi import FastAPI
 
-from api.users.routes import add_piccolo_user_crud
-from api.users.routes import router as user_router
-from config.settings import settings
-from custom_logging import custom_logging
+from src.api.users.routes import add_piccolo_user_crud
+from src.api.users.routes import router as user_router
+from src.config.settings import settings
+from src.custom_logging import custom_logging
 
 # Start Logger
 logger = logging.getLogger(__name__)
@@ -33,3 +33,8 @@ try:
 except Exception as exception:
     logger.error(f"Could not add user router\n{exception}")
     sys.exit(1)
+
+
+@app.get("/")
+def read_root_url():
+    return {"message": "Welcome to CodeTutor"}

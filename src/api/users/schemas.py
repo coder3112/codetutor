@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from schemas.user import UserOut
+from src.schemas.user import UserOut
 
 
 class TokenSchema(BaseModel):
