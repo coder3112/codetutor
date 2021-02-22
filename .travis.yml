@@ -1,4 +1,6 @@
-sudo: required
+os: linux
+
+dist: focal
 
 language: python
 
@@ -7,6 +9,14 @@ python:
   - "3.8"
   - "3.9"
 
+addons:
+  postgresql: "13.1"
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database codetutor;' -U postgres
 install:
   - pip install poetry
   - poetry config virtualenvs.create false
