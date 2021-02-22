@@ -1,5 +1,14 @@
 image: python:3.9 # Use python 3.9
 
+definitions:
+  services:
+    postgres:
+      image: postgres
+      environment:
+        POSTGRES_DB: "codetutor"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: ""
+
 pipelines:
   default:
     - step:
@@ -14,18 +23,10 @@ pipelines:
     - step:
         name: Test
         script:
+          - apt-get update && apt-get install -y postgresql-client
           - pip install poetry
           - poetry config virtualenvs.create false
           - poetry install --no-root
           - psql -c 'drop database if exists codetutor;' -U postgres
           - psql -c 'create database codetutor;' -U postgres
           - bash ./scripts/test.sh
-
-definitions:
-  services:
-    postgres:
-      image: postgres
-      environment:
-        POSTGRES_DB: "codetutor"
-        POSTGRES_USER: "postgres"
-        POSTGRES_PASSWORD: ""
