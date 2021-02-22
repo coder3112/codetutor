@@ -57,15 +57,15 @@ class CustomizeLogger:
             level=level.upper(),
             format=log_format,
         )
-        logger.add(
-            str(filepath),
-            rotation=rotation,
-            retention=retention,
-            enqueue=True,
-            backtrace=True,
-            level=level.upper(),
-            format=log_format,
-        )
+        # logger.add(
+        # str(filepath),
+        # rotation=rotation,
+        # retention=retention,
+        # enqueue=True,
+        # backtrace=True,
+        # level=level.upper(),
+        # format=log_format,
+        # )
         logging.basicConfig(handlers=[InterceptHandler()], level=0)
         logging.getLogger("uvicorn.access").handlers = [InterceptHandler()]
         for _log in ["uvicorn", "uvicorn.error", "fastapi"]:

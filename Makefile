@@ -6,14 +6,8 @@ PYTHON = python3
 # This is most often used to store functions
 .PHONY = help setup test run clean
 
-# Defining an array variable
-FILES = input output
-
-# Defines the default target that `make` will to try to make, or in the case of a phony target, execute the specified commands
-# This target is executed whenever we just type `make`
 .DEFAULT_GOAL = help
 
-# The @ makes sure that the command itself isn't echoed in the terminal
 help:
 	@echo "---------------HELP-----------------"
 	@echo "To setup the project(for developing) type make setup"
@@ -22,24 +16,20 @@ help:
 	@echo "To run the project in prod mode(AppMode=PROD and use gunicorn) type make run-prod"
 	@echo "------------------------------------"
 
-# This generates the desired project file structure
-# A very important thing to note is that macros (or makefile variables) are referenced in the target's code with a single dollar sign ${}, but all script variables are referenced with two dollar signs $${}
 setup:
 	@echo "Setting Up"
 	pip install poetry
 	poetry install --no-root
 	poetry shell
 
-# The ${} notation is specific to the make syntax and is very similar to bash's $() 
-# This function uses pytest to test our source files
 test:
 	${PYTHON} -m pytest
 	
-run:
+dev:
 	@echo "Starting..."
-	cd src; uvicorn --host 0.0.0.0 --port 8000 main:app
+	uvicorn --host 0.0.0.0 --port 8000 --workers 4 --debug src.main:app
 
-run-prod:
+prod:
 	@echo "Starting..."
 	@echo "Using gunicorn"
-	cd src; fastapi_env=production scripts/start.sh
+	fastapi_env=production bash ./start.sh
