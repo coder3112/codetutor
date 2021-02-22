@@ -22,7 +22,7 @@ services:
   - postgresql
 
 before_install:
-  - systemctl start postgresql
+  - sudo systemctl start postgresql
 
 install:
   - psql -U postgres -c 'CREATE DATABASE codetutor;'
