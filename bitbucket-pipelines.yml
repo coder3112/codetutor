@@ -17,4 +17,15 @@ pipelines:
           - pip install poetry
           - poetry config virtualenvs.create false
           - poetry install --no-root
+          - psql -c 'drop database if exists codetutor;' -U postgres
+          - psql -c 'create database codetutor;' -U postgres
           - bash ./scripts/test.sh
+
+definitions:
+  services:
+    postgres:
+      image: postgres
+      environment:
+        POSTGRES_DB: codetutor
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD:
