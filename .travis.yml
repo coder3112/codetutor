@@ -1,3 +1,5 @@
+sudo: required
+
 os: linux
 
 dist: focal
