@@ -26,6 +26,6 @@ definitions:
     postgres:
       image: postgres
       environment:
-        POSTGRES_DB: codetutor
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD:
+        POSTGRES_DB: "codetutor"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: ""
