@@ -9,14 +9,21 @@ python:
   - "3.8"
   - "3.9"
 
+env:
+  global:
+    - PGPORT=5432
+
 addons:
   postgresql: "13.1"
 
 services:
   - postgresql
 
+before_install:
+  - systemctl start postgresql
+
 install:
-  - psql -c 'CREATE DATABASE codetutor;' -U postgres
+  - psql -U postgres -c 'CREATE DATABASE codetutor;'
   - pip install poetry
   - poetry config virtualenvs.create false
   - poetry install --no-root

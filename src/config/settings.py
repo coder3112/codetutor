@@ -1,9 +1,13 @@
 from enum import Enum
+import os
 from pathlib import Path
 
 from pydantic import BaseSettings
 
+testing = os.getenv("TEST")
 env_file_path = Path(__file__).absolute().parent.parent.with_name(".env")
+if testing:
+    env_file_path = Path(__file__).absolute().parent.parent.with_name(".env.testing")
 
 
 class AppMode(Enum):
