@@ -12,4 +12,4 @@ class UserOut(BaseModel):
     first_name: Optional[str]
     last_name: Optional[str]
     active: bool
-    admin: str
+    admin: bool
