@@ -22,6 +22,10 @@ pipelines:
           - poetry run isort --color -n src/
     - step:
         name: Test
+        caches:
+          - postgres
+        services:
+          - postgres
         script:
           - apt-get update && apt-get install -y postgresql-client
           - pip install poetry

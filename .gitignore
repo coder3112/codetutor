@@ -3,4 +3,5 @@ __pycache__/
 codetutor-*/
 .vim/
 .git/
+.env
 None
