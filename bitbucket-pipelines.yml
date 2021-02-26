@@ -7,7 +7,7 @@ definitions:
       environment:
         POSTGRES_DB: "codetutor"
         POSTGRES_USER: "postgres"
-        POSTGRES_PASSWORD: ""
+        POSTGRES_PASSWORD: "postgres"
 
 pipelines:
   default:
@@ -32,4 +32,4 @@ pipelines:
               - poetry install --no-root
               - psql -c 'drop database if exists codetutor;' -U postgres
               - psql -c 'create database codetutor;' -U postgres
-              - TEST=true bash ./scripts/test.sh
+              - TEST=true POSTGRES_PASSWORD=postgres bash ./scripts/test.sh
