@@ -29,6 +29,8 @@ install:
   - pip install poetry
   - poetry config virtualenvs.create false
   - poetry install --no-root
+  - piccolo migrations forwards user --auto
+  - piccolo migrations forwards session_auth --auto
 
 script:
   - bash ./scripts/test.sh

@@ -9,10 +9,11 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from piccolo.apps.user.tables import BaseUser
+from pydantic.networks import EmailStr
 
 from src.config.settings import settings
 from src.exceptions import credentials_exception
-from src.schemas.user import UserOut
+from src.schemas.user import UserIn, UserOut
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -65,3 +66,28 @@ async def login(username: str, password: str) -> Optional[Tuple[str, UserOut]]:
     access_jwt: str = create_access_token(data)
     user = await get_current_user(access_jwt)
     return access_jwt, user
+
+
+async def register(user: UserIn):
+    username: str = user.username
+    email: EmailStr = user.email
+    password: str = user.password
+    first_name: Optional[str] = user.first_name
+    last_name: Optional[str] = user.last_name
+    created_user_list = await BaseUser.insert(
+        BaseUser(
+            username=username,
+            email=email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+        )
+    ).run()
+    created_user_id = created_user_list[0].get("id")
+    created_user: BaseUser = (
+        await BaseUser.select(exclude_secrets=True)
+        .where(BaseUser.id == created_user_id)
+        .first()
+        .run()
+    )
+    return UserOut(**created_user)

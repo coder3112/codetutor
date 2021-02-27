@@ -13,3 +13,11 @@ class UserOut(BaseModel):
     last_name: Optional[str]
     active: bool
     admin: bool
+
+
+class UserIn(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+    first_name: Optional[str]
+    last_name: Optional[str]
