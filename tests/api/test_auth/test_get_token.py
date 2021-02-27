@@ -23,7 +23,7 @@ def test_token_url_correct():
     wrongusername=st.text(min_size=1, alphabet=string.printable),
     wrongpassword=st.text(min_size=1, alphabet=string.printable),
 )
-@settings(max_examples=10000, verbosity=Verbosity.verbose, deadline=None)
+@settings(max_examples=10, verbosity=Verbosity.verbose, deadline=None)
 def test_token_url_wrong(wrongusername, wrongpassword):
     data = {"username": wrongusername, "password": wrongpassword}
     response = test_client.post(url="/token", data=data).json()

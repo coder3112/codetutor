@@ -31,7 +31,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         user = result[1]
     except (TypeError, IndexError):
         raise credentials_exception
-    token = {"access_token": jwt, "user": user.json(), "token_type": "bearer"}
+    token = {"access_token": jwt, "user": user, "token_type": "bearer"}
     return token
 
 
