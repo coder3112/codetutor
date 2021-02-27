@@ -5,3 +5,7 @@ codetutor-*/
 .git/
 .env
 None
+Dockerfile
+.dockerignore
+docker-compose.yml
+.hypothesis/
