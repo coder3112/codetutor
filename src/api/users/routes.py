@@ -14,15 +14,6 @@ from .schemas import TokenSchema
 router = APIRouter()
 
 
-def add_piccolo_user_crud(fastapi_app):
-    FastAPIWrapper(
-        root_url="/users/",
-        fastapi_app=fastapi_app,
-        piccolo_crud=PiccoloCRUD(BaseUser),
-        fastapi_kwargs=FastAPIKwargs({"tags": ["Auth"]}),
-    )
-
-
 @router.post("/token", response_model=TokenSchema)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     result = await login(username=form_data.username, password=form_data.password)
