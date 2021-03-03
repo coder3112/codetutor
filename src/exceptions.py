@@ -16,3 +16,9 @@ jwt_exception = CredentialsException(
     detail="Could not find bearer token in header authorization",
     headers={"WWW-Authenticate": "Bearer"},
 )
+
+admin_exception = CredentialsException(
+    status_code=status.HTTP_403_FORBIDDEN,
+    detail="User is not admin",
+    headers={"WWW-Authenticate": "Bearer"},
+)

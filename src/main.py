@@ -2,12 +2,10 @@
 Server Init file.
 """
 import logging
-from src.utils.auth import jwt_required
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, Depends
-from starlette.requests import Request
+from fastapi import FastAPI
 
 from src.api.users.routes import router as user_router
 from src.config.settings import settings

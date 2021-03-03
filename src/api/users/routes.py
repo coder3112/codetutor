@@ -1,9 +1,6 @@
 from fastapi import APIRouter, Depends, status
 from fastapi.exceptions import HTTPException
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
-from piccolo.apps.user.tables import BaseUser
-from piccolo_api.crud.endpoints import PiccoloCRUD
-from piccolo_api.fastapi.endpoints import FastAPIKwargs, FastAPIWrapper
 
 from src.exceptions import credentials_exception
 from src.schemas.user import UserIn
