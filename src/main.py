@@ -33,6 +33,6 @@ except Exception as exception:
     sys.exit(1)
 
 
-@app.get("/")
+@app.get("/", tags=["Default"])
 def read_root_url():
     return {"message": "Welcome to CodeTutor"}
