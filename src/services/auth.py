@@ -63,6 +63,7 @@ async def login(username: str, password: str) -> Optional[Tuple[str, UserOut]]:
     if not user_id:
         return None
     data: Dict = {"sub": username}
+    # TODO: Use expiry time
     access_jwt: str = create_access_token(data)
     user = await get_current_user(access_jwt)
     return access_jwt, user
