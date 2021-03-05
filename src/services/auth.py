@@ -75,6 +75,12 @@ async def register(user: UserIn):
     password: str = user.password
     first_name: Optional[str] = user.first_name
     last_name: Optional[str] = user.last_name
+    user_qs = await BaseUser.select().where(BaseUser.username == username).run()
+    if len(user_qs) > 0:
+        return {"error": "Username already registered", "created": False}
+    user_qs = await BaseUser.select().where(BaseUser.email == email).run()
+    if len(user_qs) > 0:
+        return {"error": "Email already registered", "created": False}
     created_user_list = await BaseUser.insert(
         BaseUser(
             username=username,
@@ -82,6 +88,7 @@ async def register(user: UserIn):
             password=password,
             first_name=first_name,
             last_name=last_name,
+            active=True,
         )
     ).run()
     created_user_id = created_user_list[0].get("id")
@@ -91,4 +98,4 @@ async def register(user: UserIn):
         .first()
         .run()
     )
-    return UserOut(**created_user)
+    return {"user": created_user, "created": True}

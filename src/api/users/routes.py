@@ -1,5 +1,7 @@
 from typing import Dict, List
+from fastapi.param_functions import Body
 from starlette.requests import Request
+from starlette.status import HTTP_400_BAD_REQUEST
 from src.utils.auth import is_admin
 from time import sleep
 
@@ -29,12 +31,15 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return token
 
 
-@router.post("/register")
-async def register_endpoint(form_data: UserIn):
+@router.post("/register", status_code=201)
+async def register_endpoint(form_data: UserIn = Body(...)):
     result = await register(form_data)
-    if result:
+    if result.get("created"):
         return result
-    raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    raise HTTPException(
+        detail=f"Could not register user because {result.get('error')}",
+        status_code=status.HTTP_400_BAD_REQUEST,
+    )
 
 
 @router.get("/users")
