@@ -1,18 +1,14 @@
-from typing import Dict, List
-from fastapi.param_functions import Body
-from starlette.requests import Request
-from starlette.status import HTTP_400_BAD_REQUEST
-from src.utils.auth import is_admin
-from time import sleep
-
 from fastapi import APIRouter, Depends, status
 from fastapi.exceptions import HTTPException
+from fastapi.param_functions import Body
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from piccolo.apps.user.tables import BaseUser
+from starlette.requests import Request
 
 from src.exceptions import credentials_exception
-from src.schemas.user import UserIn, UserListOut, UserOut
+from src.schemas.user import UserIn, UserListOut
 from src.services.auth import login, register
+from src.utils.auth import is_admin
 
 from .schemas import TokenSchema
 
