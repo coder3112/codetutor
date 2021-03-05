@@ -1,9 +1,15 @@
+from typing import Dict, List
+from starlette.requests import Request
+from src.utils.auth import is_admin
+from time import sleep
+
 from fastapi import APIRouter, Depends, status
 from fastapi.exceptions import HTTPException
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
+from piccolo.apps.user.tables import BaseUser
 
 from src.exceptions import credentials_exception
-from src.schemas.user import UserIn
+from src.schemas.user import UserIn, UserListOut, UserOut
 from src.services.auth import login, register
 
 from .schemas import TokenSchema
@@ -29,3 +35,10 @@ async def register_endpoint(form_data: UserIn):
     if result:
         return result
     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@router.get("/users")
+async def return_all_users(request: Request = Depends(is_admin)):
+    users = await BaseUser.select()
+    users_serialized = UserListOut.parse_obj(users)
+    return {"users": users_serialized}

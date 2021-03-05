@@ -1,4 +1,4 @@
-from typing import Optional, Union
+from typing import List, Optional, Union
 
 from pydantic.main import BaseModel
 from pydantic.networks import EmailStr
@@ -21,3 +21,7 @@ class UserIn(BaseModel):
     password: str
     first_name: Optional[str]
     last_name: Optional[str]
+
+
+class UserListOut(BaseModel):
+    __root__: List[UserOut]

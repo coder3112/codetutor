@@ -2,12 +2,8 @@ from typing import Optional, Tuple
 
 from fastapi import Request
 
-from src.exceptions import (
-    CredentialsException,
-    admin_exception,
-    credentials_exception,
-    jwt_exception,
-)
+from src.exceptions import (CredentialsException, admin_exception,
+                            credentials_exception, jwt_exception)
 from src.services.auth import get_current_user
 
 
