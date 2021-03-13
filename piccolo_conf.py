@@ -17,5 +17,6 @@ APP_REGISTRY = AppRegistry(
     apps=[
         "piccolo_admin.piccolo_app",
         "piccolo.apps.user.piccolo_app",
+        "src.models.piccolo_app",
     ]
 )
