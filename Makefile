@@ -33,3 +33,11 @@ prod:
 	@echo "Starting..."
 	@echo "Using gunicorn"
 	fastapi_env=production bash ./start.sh
+
+push:
+	@bash commit.sh
+	@echo "Pushing to git repo"
+	@eval "$(ssh-agent -s)"
+	@ssh-add ~/.ssh/github
+	@git push
+	@"Push complete"
