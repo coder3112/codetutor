@@ -40,4 +40,4 @@ push:
 	@eval "$(ssh-agent -s)"
 	@ssh-add ~/.ssh/github
 	@git push
-	@"Push complete"
+	@echo "Push complete"
