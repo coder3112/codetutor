@@ -23,10 +23,9 @@ async def jwt_required(request: Request) -> Optional[str]:
         user = await get_current_user(param)
         if not user:
             raise credentials_exception
-        return None
+        return param
     except CredentialsException:
         raise credentials_exception
-    return param
 
 
 async def is_admin(request: Request) -> Optional[str]:
@@ -40,7 +39,6 @@ async def is_admin(request: Request) -> Optional[str]:
             raise credentials_exception
         if not user.admin:
             raise admin_exception
-        return None
+        return param
     except CredentialsException:
         raise credentials_exception
-    return param

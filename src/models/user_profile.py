@@ -1,8 +1,8 @@
 from enum import Enum
 
 from piccolo import columns
-from piccolo.table import Table
 from piccolo.columns.reference import LazyTableReference
+from piccolo.table import Table
 
 
 class Role(str, Enum):
@@ -20,7 +20,7 @@ class UserProfileModel(Table, tablename="profiles"):
     """
 
     role = columns.Varchar()
-    user = columns.ForeignKey(
+    user_id = columns.ForeignKey(
         references=LazyTableReference(
             "BaseUser", module_path="piccolo.apps.user.tables"
         )
@@ -41,8 +41,8 @@ class UserProfileModel(Table, tablename="profiles"):
 
     @property
     def username(self) -> str:
-        return self.user.username
+        return self.user_id.username
 
     @property
     def email(self) -> str:
-        return self.user.email
+        return self.user_id.email

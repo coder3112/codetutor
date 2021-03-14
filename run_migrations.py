@@ -1,9 +1,9 @@
 import os
 
 commands = [
-    "piccolo migrations new user --auto; piccolo migrations forwards user",
-    "piccolo migrations new session_auth --auto; piccolo migrations forwards session_auth",
-    "piccolo migrations new models --auto; piccolo migrations forwards models;",
+    "piccolo migrations forwards user",
+    "piccolo migrations forwards session_auth",
+    "piccolo migrations forwards models;",
 ]
 
 for command in commands:

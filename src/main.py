@@ -7,6 +7,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 
+from src.api.profile.routes import router as profile_router
 from src.api.users.routes import router as user_router
 from src.config.settings import settings
 from src.custom_logging import custom_logging
@@ -30,6 +31,13 @@ try:
     logger.info("Added user router")
 except Exception as exception:
     logger.error(f"Could not add user router\n{exception}")
+    sys.exit(1)
+
+try:
+    app.include_router(profile_router, tags=["Auth"])
+    logger.info("Added profile router")
+except Exception as exception:
+    logger.error(f"Could not add profile router\n{exception}")
     sys.exit(1)
 
 

@@ -1,6 +1,5 @@
 from piccolo.apps.migrations.auto import MigrationManager
-from piccolo.columns.base import OnDelete
-from piccolo.columns.base import OnUpdate
+from piccolo.columns.base import OnDelete, OnUpdate
 from piccolo.columns.defaults.date import DateNow
 from piccolo.columns.defaults.timestamp import TimestampCustom
 from piccolo.table import Table
@@ -14,7 +13,7 @@ class CourseModel(Table, tablename="courses"):
     pass
 
 
-ID = "2021-03-13T17:27:58"
+ID = "2021-03-14T19:01:37"
 VERSION = "0.16.5"
 
 
@@ -44,7 +43,7 @@ async def forwards():
     manager.add_column(
         table_class_name="UserProfileModel",
         tablename="profiles",
-        column_name="user",
+        column_name="user_id",
         column_class_name="ForeignKey",
         params={
             "references": BaseUser,
@@ -149,7 +148,7 @@ async def forwards():
         column_class_name="Timestamp",
         params={
             "default": TimestampCustom(
-                year=2021, month=3, day=3, hour=17, second=58, microsecond=312612
+                year=2021, month=3, day=3, hour=19, second=37, microsecond=162473
             ),
             "null": False,
             "primary": False,

@@ -2,8 +2,8 @@ import os
 
 from piccolo.conf.apps import AppConfig
 
-import src.models.user_profile as user_profile
 import src.models.course as course
+import src.models.user_profile as user_profile
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
