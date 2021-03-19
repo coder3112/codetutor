@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 
 from src.models.user_profile import UserProfileModel
 from src.schemas.profile import ProfileOut
+from src.schemas.user import UserOut
 from src.services.auth import get_current_user
 from src.utils.auth import jwt_required
 
@@ -18,5 +19,7 @@ async def get_user_profile(token: str = Depends(jwt_required)):
         .first()
         .run()
     )
-    response_body = {"profile": profile, "user": user}
-    return ProfileOut(**response_body)
+    user_returned = UserOut(**user.dict())
+    profile_returned = ProfileOut(**profile.dict())
+    response_body = {"profile": profile_returned, "user": user_returned}
+    return response_body

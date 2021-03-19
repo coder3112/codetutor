@@ -13,7 +13,11 @@ from pydantic.networks import EmailStr
 
 from src.config.settings import settings
 from src.exceptions import credentials_exception
+from src.models.user_profile import Role
+from src.schemas.profile import ProfileIn
 from src.schemas.user import UserIn, UserOut
+
+from .profile import create_profile
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -91,7 +95,12 @@ async def register(user: UserIn):
             active=True,
         )
     ).run()
-    created_user_id = created_user_list[0].get("id")
+    created_user_id = (created_user_list[0]).get("id")
+    profile = {
+        "role": Role.student,
+        "user_id": created_user_id,
+    }
+    await create_profile(ProfileIn(**profile))
     created_user: BaseUser = (
         await BaseUser.select(exclude_secrets=True)
         .where(BaseUser.id == created_user_id)

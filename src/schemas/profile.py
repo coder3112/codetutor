@@ -12,7 +12,7 @@ class ProfileIn(BaseModel):
     """
 
     role: Role = Role.student
-    user: int
+    user_id: int
     courses_bought: List = []
     courses_completed: List = []
 
