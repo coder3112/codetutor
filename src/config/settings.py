@@ -27,6 +27,11 @@ class Settings(BaseSettings):
     postgres_user: str
     postgres_password: str
 
+    # API Keys
+    vimeo_token: str
+    vimeo_client_id: str
+    vimeo_client_secret: str
+
     class Config:
         env_file = env_file_path
 

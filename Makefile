@@ -23,7 +23,9 @@ setup:
 	poetry shell
 
 test:
-	${PYTHON} -m pytest
+	@echo "STARTING TESTS"
+	@echo "------------------------------------------------------------------------------------------"
+	@bash scripts/test.sh
 	
 dev:
 	@echo "Starting..."
@@ -35,6 +37,7 @@ prod:
 	fastapi_env=production bash ./start.sh
 
 push:
+	@bash scripts/lint_format.sh
 	@bash commit.sh
 	@echo "Pushing to git repo"
 	@eval "$(ssh-agent -s)"

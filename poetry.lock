@@ -268,6 +268,14 @@ pycodestyle = ">=2.6.0a1,<2.7.0"
 pyflakes = ">=2.2.0,<2.3.0"
 
 [[package]]
+name = "future"
+version = "0.18.2"
+description = "Clean single-source support for Python 3 and 2"
+category = "main"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
 name = "gunicorn"
 version = "20.0.4"
 description = "WSGI HTTP Server for UNIX"
@@ -872,6 +880,18 @@ python-versions = "*"
 six = ">=1.4.0"
 
 [[package]]
+name = "pyvimeo"
+version = "1.1.0"
+description = "Simple interaction with the Vimeo API."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+requests = ">=2.4.0"
+tuspy = ">=0.2.4"
+
+[[package]]
 name = "pyyaml"
 version = "5.4.1"
 description = "YAML parser and emitter for Python"
@@ -956,6 +976,14 @@ colorama = ">=0.4.0,<0.5.0"
 docstring-parser = "0.7.1"
 
 [[package]]
+name = "tinydb"
+version = "4.4.0"
+description = "TinyDB is a tiny, document oriented database optimized for your happiness :)"
+category = "main"
+optional = false
+python-versions = ">=3.5,<4.0"
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -976,6 +1004,25 @@ ipython-genutils = "*"
 
 [package.extras]
 test = ["pytest"]
+
+[[package]]
+name = "tuspy"
+version = "0.2.4"
+description = "A Python client for the tus resumable upload protocol ->  http://tus.io"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+certifi = ">=2018.1.18"
+future = ">=0.16.0"
+requests = ">=2.18.4"
+six = ">=1.11.0"
+tinydb = ">=3.5.0"
+
+[package.extras]
+dev = ["tox (>=2.3.1)", "sphinx-autobuild (==0.7.1)", "Sphinx (==1.7.1)"]
+test = ["responses (>=0.5.1)", "mock (>=2.0.0)", "coverage (>=4.2)", "pytest (>=3.0.3)", "pytest-cov (>=2.3.1)"]
 
 [[package]]
 name = "typed-ast"
@@ -1106,7 +1153,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "b6b712f8c9cc55d4ec8990b77d1562d2eaf848136a29476bdfc7236dfe71fa63"
+content-hash = "31658305db704dd4066201e23697973ebd04da3f5c0d14f9028d4b4ac944b4b3"
 
 [metadata.files]
 aiofiles = [
@@ -1264,6 +1311,9 @@ fastapi = [
 flake8 = [
     {file = "flake8-3.8.4-py2.py3-none-any.whl", hash = "sha256:749dbbd6bfd0cf1318af27bf97a14e28e5ff548ef8e5b1566ccfb25a11e7c839"},
     {file = "flake8-3.8.4.tar.gz", hash = "sha256:aadae8761ec651813c24be05c6f7b4680857ef6afaae4651a4eccaef97ce6c3b"},
+]
+future = [
+    {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
 ]
 gunicorn = [
     {file = "gunicorn-20.0.4-py2.py3-none-any.whl", hash = "sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c"},
@@ -1570,6 +1620,9 @@ python-jose = [
 python-multipart = [
     {file = "python-multipart-0.0.5.tar.gz", hash = "sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43"},
 ]
+pyvimeo = [
+    {file = "PyVimeo-1.1.0.tar.gz", hash = "sha256:b45ac205593f334a73372a2ebf1453843d6ea4a9a5e3c8e75c3e33e183ae9116"},
+]
 pyyaml = [
     {file = "PyYAML-5.4.1-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:3b2b1824fe7112845700f815ff6a489360226a5609b96ec2190a45e62a9fc922"},
     {file = "PyYAML-5.4.1-cp27-cp27m-win32.whl", hash = "sha256:129def1b7c1bf22faffd67b8f3724645203b79d8f4cc81f674654d9902cb4393"},
@@ -1660,6 +1713,10 @@ targ = [
     {file = "targ-0.1.9-py3-none-any.whl", hash = "sha256:0c1f2cec56f3a2bf5787a9a6396d75beebbb215a5c37f8647b17fbfce601374f"},
     {file = "targ-0.1.9.tar.gz", hash = "sha256:6d3a5a1574fb11b218e92b97dd48c268bcbec84309426fc33a3e2d443c7b271c"},
 ]
+tinydb = [
+    {file = "tinydb-4.4.0-py3-none-any.whl", hash = "sha256:30b0f718ebb288e42d2f69f3e1b18928739f25153e6b5308a234e95c1673de71"},
+    {file = "tinydb-4.4.0.tar.gz", hash = "sha256:d57c29524ecacc081ebc24f96e0d787bba11dc20d52634a32a709b878be3545a"},
+]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
@@ -1667,6 +1724,9 @@ toml = [
 traitlets = [
     {file = "traitlets-5.0.5-py3-none-any.whl", hash = "sha256:69ff3f9d5351f31a7ad80443c2674b7099df13cc41fc5fa6e2f6d3b0330b0426"},
     {file = "traitlets-5.0.5.tar.gz", hash = "sha256:178f4ce988f69189f7e523337a3e11d91c786ded9360174a3d9ca83e79bc5396"},
+]
+tuspy = [
+    {file = "tuspy-0.2.4.tar.gz", hash = "sha256:49b674003bbdb0e2ee3fc949490f85ca381929f712f17a7a56404ff6217e96e8"},
 ]
 typed-ast = [
     {file = "typed_ast-1.4.2-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:7703620125e4fb79b64aa52427ec192822e9f45d37d4b6625ab37ef403e1df70"},
