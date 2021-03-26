@@ -12,6 +12,9 @@ client = vimeo.VimeoClient(
 
 
 async def check_transcoding(uri: str):
+    """
+    To be used as a background task
+    """
     response = client.get(uri + "?fields=transcode.status").json()
     while True:
         if response["transcode"]["status"] == "complete":
