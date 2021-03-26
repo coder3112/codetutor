@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 
 import vimeo
 
@@ -25,7 +25,7 @@ async def upload_video(
     file_name: str,
     description: str,
     name: Optional[str] = None,
-) -> str:
+) -> Tuple:
     if not name:
         name = file_name
     uri = client.upload(
@@ -37,4 +37,4 @@ async def upload_video(
     )
     response = client.get(uri + "?fields=link").json()
     video_link: str = response["link"]
-    return video_link
+    return uri, video_link
