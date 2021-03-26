@@ -6,10 +6,12 @@ from src.schemas.user import UserOut
 from src.services.auth import get_current_user
 from src.utils.auth import jwt_required
 
+from .schemas import ProfileReturnModel
+
 router = APIRouter()
 
 
-@router.get("/profile")
+@router.get("/profile", response_model=ProfileReturnModel)
 async def get_user_profile(token: str = Depends(jwt_required)):
     user = await get_current_user(token)
     user_id = user.id
