@@ -9,6 +9,7 @@ from fastapi import FastAPI
 
 from src.api.profile.routes import router as profile_router
 from src.api.users.routes import router as user_router
+from src.api.videos.routes import router as course_router
 from src.config.settings import settings
 from src.custom_logging import custom_logging
 
@@ -38,6 +39,13 @@ try:
     logger.info("Added profile router")
 except Exception as exception:
     logger.error(f"Could not add profile router\n{exception}")
+    sys.exit(1)
+
+try:
+    app.include_router(course_router, tags=["Courses"])
+    logger.info("Added course router")
+except Exception as exception:
+    logger.error(f"Could not add course router\n{exception}")
     sys.exit(1)
 
 

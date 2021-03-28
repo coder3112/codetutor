@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -24,6 +24,6 @@ class ProfileOut(BaseModel):
 
     id: int
     role: Role = Role.student
-    user: UserOut
-    courses_bought: List = []
-    courses_completed: List = []
+    user_id: int
+    courses_bought: Optional[List] = []
+    courses_completed: Optional[List] = []

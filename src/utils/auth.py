@@ -1,9 +1,16 @@
+from src.schemas.profile import ProfileOut
+from src.models.user_profile import Role, UserProfileModel
 from typing import Optional, Tuple
 
 from fastapi import Request
+from fastapi.param_functions import Depends
 
-from src.exceptions import (CredentialsException, admin_exception,
-                            credentials_exception, jwt_exception)
+from src.exceptions import (
+    CredentialsException,
+    admin_exception,
+    credentials_exception,
+    jwt_exception,
+)
 from src.services.auth import get_current_user
 
 
@@ -42,3 +49,17 @@ async def is_admin(request: Request) -> Optional[str]:
         return param
     except CredentialsException:
         raise credentials_exception
+
+
+async def is_instructor(jwt=Depends(jwt_required)):
+    user = await get_current_user(jwt)
+    profile = (
+        await UserProfileModel.select()
+        .where(UserProfileModel.user_id == user.id)
+        .first()
+        .run()
+    )
+    print(profile)
+    if profile.get('role') != "instructor":
+        raise credentials_exception
+    return user

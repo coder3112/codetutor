@@ -1,4 +1,4 @@
-from typing import Optional, Tuple
+from typing import Tuple
 
 import vimeo
 
@@ -27,7 +27,7 @@ async def check_transcoding(uri: str):
 async def upload_video(
     file_name: str,
     description: str,
-    name: Optional[str] = None,
+    name: str,
 ) -> Tuple:
     if not name:
         name = file_name
@@ -40,4 +40,4 @@ async def upload_video(
     )
     response = client.get(uri + "?fields=link").json()
     video_link: str = response["link"]
-    return uri, video_link
+    return (uri, video_link, name, description)
