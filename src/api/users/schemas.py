@@ -7,3 +7,8 @@ class TokenSchema(BaseModel):
     access_token: str
     token_type: str
     user: UserOut
+
+
+class RegisterReturnResponse(BaseModel):
+    user: UserOut
+    created: bool

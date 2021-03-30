@@ -26,6 +26,43 @@ async def upload_new_video(
     section: int,
     video: UploadFile = File(...),
 ):
+    """
+    - Upload a video for the course
+    - It's **request** has: <br>
+        - Query params:
+            - ```name (str) of video```
+            - ```description (str) of video```
+            - ```course (int) - id of course```
+            - ```section(int) - it is a part of```
+        - Multipart form:
+            - File parameter which has the video file
+    - Its **response** is of the form:
+    ```
+    "course_videos_json": {
+        "1": {
+          "name": "Section 1",
+          "videos": [
+            {
+              "0": {
+                "link": "link",
+                "name": "name",
+                "description": "description"
+              }
+            },
+            {
+              "1": {
+                "link": "link",
+                  "name": "2",
+                "description": "2"
+              }
+            },
+            },
+          ]
+        }
+      }
+    }
+    ```
+    """
     # Using following link for video.read and f.write
     # https://stackoverflow.com/questions/63580229/how-to-save-uploadfile-in-fastapi
     # Basically, UploadFile is a wrapper around TemporaryFile
@@ -56,6 +93,16 @@ async def upload_new_video(
 
 @router.post("/create/course", status_code=201, response_model=CourseCreateResponse)
 async def create_new_course(form: CourseForm = Body(...), user=Depends(is_instructor)):
+    """
+    - It **creates a new course**
+    - The **instructor is the person logged in**
+    - Payload is of form:
+    ```
+    {
+        "title": "the title is a string"
+    }
+    ```
+    """
     title = form.title
     videos = "{}"
     modified_at = date.today()
