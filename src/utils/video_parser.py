@@ -23,6 +23,7 @@ class VideoJSONParser:
     """
 
     def __init__(self, video_json) -> None:
+        print(video_json)
         self.json = json.loads(video_json)
 
     def __str__(self) -> str:
@@ -43,7 +44,12 @@ class VideoJSONParser:
         :param link:
             Link of video to be added.
         """
-        video_id = len(self.json[str(section)]["videos"]) + 1
+        # if not str(section) in self.json:
+        #     self.add_section(f"Section {section}")
+        if str(section) not in self.json:
+            self.add_section(f"Section {section}")
+        video_id = len(self.json[str(section)]["videos"])
+        print(video_id)
         self.json[str(section)]["videos"].append(
             {f"{video_id}": {"name": name, "link": link, "description": description}}
         )
@@ -57,7 +63,7 @@ class VideoJSONParser:
         Section Id is automatically calculated
         """
         new_section_id: int = len(self.json.keys()) + 1
-        self.json[new_section_id] = {"name": section_name, "videos": []}
+        self.json[f"{new_section_id}"] = {"name": section_name, "videos": []}
         return self()
 
     def remove_video(self, section: int, video: int) -> str:

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from src.models.user_profile import Role, UserProfileModel
+from src.models.user_profile import UserProfileModel
 from src.schemas.profile import ProfileOut
 from src.services.auth import get_current_user
 from src.utils.auth import jwt_required
@@ -25,14 +25,16 @@ async def get_user_profile(token: str = Depends(jwt_required)):
     return response_body
 
 
-@router.put("/create/profile/instructor")
+@router.patch("/create/profile/instructor")
 async def create_instructor_profile(token: str = Depends(jwt_required)):
     user = await get_current_user(token)
     user_id = user.id
-    profile: UserProfileModel = await UserProfileModel.objects().where(UserProfileModel.user_id == user.id).first().run()
+    profile: UserProfileModel = (
+        await UserProfileModel.objects()
+        .where(UserProfileModel.user_id == user_id)
+        .first()
+        .run()
+    )
     profile.role = "instructor"
     await profile.save().run()
-    return {
-        "updated": True,
-        "profile": profile
-    }
+    return {"updated": True, "profile": profile}

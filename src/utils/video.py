@@ -21,7 +21,8 @@ async def check_transcoding(uri: str):
             return "complete"
         if response["transcode"]["status"] == "in_progress":
             continue
-        return "error"
+        print(response)
+        return response
 
 
 async def upload_video(

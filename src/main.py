@@ -21,6 +21,8 @@ try:
     app: FastAPI = FastAPI(name=settings.name, title=settings.name)
     logger = custom_logging.CustomizeLogger.make_logger(config_path)
     # logger.add(f"/var/{settings.name.lower()}.log")
+    logger.add(sys.stdout)
+    logger.add(sys.stderr)
     logger.info("Initialized app")
 except ModuleNotFoundError:
     logger.error("FastAPI likely not found")

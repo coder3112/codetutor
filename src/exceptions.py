@@ -22,3 +22,7 @@ admin_exception = CredentialsException(
     detail="User is not admin",
     headers={"WWW-Authenticate": "Bearer"},
 )
+
+
+class CoursesException(HTTPException):
+    pass

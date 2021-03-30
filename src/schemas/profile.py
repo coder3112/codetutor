@@ -3,7 +3,6 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 from src.models.user_profile import Role
-from src.schemas.user import UserOut
 
 
 class ProfileIn(BaseModel):
