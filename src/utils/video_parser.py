@@ -33,7 +33,9 @@ class VideoJSONParser:
         return self.dump()
 
     def dump(self):
-        return json.dumps(self.json)
+        # print(self.json)
+        # return json.dumps(self.json)
+        return self.json
 
     def add_video(self, section: int, name: str, link: str, description: str) -> str:
         """

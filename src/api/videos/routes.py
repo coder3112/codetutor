@@ -1,3 +1,4 @@
+import json
 from datetime import date
 
 import aiofiles
@@ -49,7 +50,7 @@ async def upload_new_video(
     )
     video_parser = VideoJSONParser(f"{original_json['videos']}")
     new_json = video_parser.add_video(section, name, link, description)
-    await CourseModel.update({CourseModel.videos: new_json}).run()
+    await CourseModel.update({CourseModel.videos: json.dumps(new_json)}).run()
     return {"course_videos_json": new_json}
 
 
