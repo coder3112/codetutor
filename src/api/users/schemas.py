@@ -12,3 +12,7 @@ class TokenSchema(BaseModel):
 class RegisterReturnResponse(BaseModel):
     user: UserOut
     created: bool
+
+
+class LogoutReturResponse(BaseModel):
+    logged_out: bool

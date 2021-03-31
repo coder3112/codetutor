@@ -1,14 +1,16 @@
+from src.models.blacklistjwt import BlackListedJWTModel
 from fastapi import APIRouter, Depends, status
 from fastapi.exceptions import HTTPException
 from fastapi.param_functions import Body
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from piccolo.apps.user.tables import BaseUser
 from starlette.requests import Request
+from starlette.responses import RedirectResponse
 
 from src.exceptions import credentials_exception
 from src.schemas.user import UserIn, UserListOut
-from src.services.auth import login, register
-from src.utils.auth import is_admin
+from src.services.auth import get_current_user, login, register
+from src.utils.auth import is_admin, jwt_required
 
 from .schemas import RegisterReturnResponse, TokenSchema
 
@@ -66,7 +68,7 @@ async def register_endpoint(form_data: UserIn = Body(...)):
 
 
 @router.get("/users")
-async def return_all_users(request: Request = Depends(is_admin)):
+async def return_all_users(request=Depends(is_admin)):
     """
     - Returns a **list of users registered**
     - You must be an admin to access this endpoint
@@ -74,3 +76,27 @@ async def return_all_users(request: Request = Depends(is_admin)):
     users = await BaseUser.select().run()
     users_serialized = UserListOut.parse_obj(users)
     return {"users": users_serialized}
+
+
+@router.delete("/delete/user")
+async def delete_user(jwt: str = Depends(jwt_required)):
+    """
+    - **Delete** a user account
+    - Uses logged in user as the user
+    """
+    user = await get_current_user(jwt)  # Get user
+    deleted_user = (
+        await BaseUser.delete().where(BaseUser.id == user.id).run()
+    )  # Delete user.
+    return RedirectResponse("/logout")
+
+
+@router.post("/logout")
+async def logout_user(jwt: str = Depends(jwt_required)):
+    """
+    - Logs out user
+    - uses given JWT
+    """
+    # Add jwt to blacklist
+    await BlackListedJWTModel.insert(BlackListedJWTModel(jwt=jwt)).run()
+    return {"logged_out": True}
