@@ -6,7 +6,7 @@ from fastapi import APIRouter, BackgroundTasks, Body, Depends, File, UploadFile
 
 from src.exceptions import CoursesException
 from src.models.course import CourseModel
-from src.services.courses import create_course
+from src.services.courses import create_course, get_courses as get_course
 from src.utils.auth import is_instructor
 from src.utils.video import check_transcoding, upload_video
 from src.utils.video_parser import VideoJSONParser
@@ -111,3 +111,13 @@ async def create_new_course(form: CourseForm = Body(...), user=Depends(is_instru
     if not response.get("created"):
         raise CoursesException(400, response.get("error"))
     return {"created": True, "course": form, "instructor": user}
+
+
+@router.get('/courses/', status_code=200)
+async def get_courses():
+    return await get_course()
+
+
+@router.get('/courses/{title}', status_code=200)
+async def get_courses_by_title(title: str):
+    return await get_course(title)

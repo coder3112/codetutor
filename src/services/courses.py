@@ -1,7 +1,8 @@
 from datetime import date
+from typing import Optional
 
 from src.models.course import CourseModel
-from src.schemas.courses import CourseIn
+from src.schemas.courses import CourseIn, CourseOutList
 
 
 async def create_course(title: str, instructor: int, videos: str, modified_at: date):
@@ -24,3 +25,18 @@ async def create_course(title: str, instructor: int, videos: str, modified_at: d
     course_id = courses[0].get("id")
     course = await CourseModel.select().where(CourseModel.id == course_id).first().run()
     return {"created": True, "course": CourseIn(**course)}
+
+
+
+async def get_courses(title: Optional[str] = None):
+    if title:
+        qs = await CourseModel.select().where(CourseModel.title == title).run()
+        print('inside')
+    else:
+        qs = await CourseModel.select().run()
+    print(qs)
+    courses_serialized = CourseOutList.parse_obj(qs)
+
+    return {
+        "courses": courses_serialized
+    }
