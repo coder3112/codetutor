@@ -108,3 +108,22 @@ async def register(user: UserIn):
         .run()
     )
     return {"user": created_user, "created": True}
+
+
+async def change_password(new_pass, token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: Optional[str] = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+
+    except JWTError:
+        raise credentials_exception
+
+    current_user: Optional[BaseUser] = (
+        await BaseUser.select().where(BaseUser.username == username).first().run()
+    )
+    if current_user is None:
+        raise credentials_exception
+
+    current_user.password = new_pass

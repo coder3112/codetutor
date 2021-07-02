@@ -4,7 +4,7 @@ Authentication business logic
 from piccolo.apps.user.tables import BaseUser
 
 from src.models.user_profile import Role, UserProfileModel
-from src.schemas.profile import ProfileIn
+from src.schemas.profile import ProfileIn, ProfileOut
 
 
 async def create_profile(profile: ProfileIn):
@@ -32,3 +32,13 @@ async def create_profile(profile: ProfileIn):
         .run()
     )
     return {"profile": profile, "created": True}
+
+
+async def get_profile(username: str):
+    profile = (
+            await UserProfileModel.select()
+            .where(UserProfileModel.username == username)
+            .first()
+            .run()
+            )
+    return profile

@@ -76,6 +76,7 @@ async def upload_new_video(
         description=description, file_name=video.filename, name=name
     )
     background_tasks.add_task(check_transcoding, response[0])
+    print("Upload")
     link = response[1]
     name = response[2]
     description = response[3]
